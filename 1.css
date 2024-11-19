@@ -1,0 +1,313 @@
+/* Cơ bản cho toàn bộ trang */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Arial", sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    display: flex;
+    flex-direction: column; /* Đảm bảo các phần tử theo chiều dọc */
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  /* Header */
+  h2,
+  h3 {
+    text-align: center;
+    color: #4caf50;
+  }
+  
+  /* Danh sách các môn thi */
+  #countdown-container {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các môn học xếp thành hàng ngang khi không đủ chỗ */
+    justify-content: center; /* Căn giữa các môn */
+    gap: 15px; /* Khoảng cách giữa các môn */
+    width: 100%;
+    max-width: 100%; /* Điều chỉnh cho phù hợp */
+    margin-bottom: 30px; /* Khoảng cách với bảng tổng hợp điểm */
+  }
+  
+  .countdown {
+    background-color: #ffffff;
+    padding: 15px 20px;
+    width: 200px; /* Đặt chiều rộng cho các môn học */
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    border: 2px solid #ddd;
+  }
+  
+  .countdown:hover {
+    background-color: #4caf50;
+    color: white;
+    transform: translateY(-5px);
+  }
+  
+  /* Modal nhập điểm */
+  .modal {
+    display: none; /* Mặc định ẩn modal */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Đưa modal vào giữa màn hình */
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 100;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .modal.active {
+    display: block; /* Hiển thị modal khi có lớp active */
+    opacity: 1; /* Đảm bảo modal hiện lên với hiệu ứng mờ dần */
+    visibility: visible;
+  }
+  
+  #grade-input-modal {
+    text-align: center;
+  }
+  
+  #grade-input-modal h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  #grade-input-modal input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    font-size: 16px;
+  }
+  
+  #grade-input-modal input:focus {
+    outline: none;
+    border-color: #4caf50;
+  }
+  
+  /* Các nút */
+  button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+    transform: translateY(-3px);
+  }
+  
+  button:active {
+    transform: translateY(1px);
+  }
+  
+  #close-btn {
+    background-color: #f44336;
+    margin-top: 15px;
+  }
+  
+  #close-btn:hover {
+    background-color: #e41f17;
+  }
+  
+  /* Bảng tổng hợp điểm */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    max-width: 1200px;
+    overflow-x: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  table,
+  th,
+  td {
+    border: 1px solid #ddd;
+  }
+  
+  th,
+  td {
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+    color: #4caf50;
+  }
+  
+  td {
+    background-color: white;
+  }
+  
+  td input {
+    width: 70%;
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  td input:focus {
+    outline: none;
+    border-color: #4caf50;
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    body {
+      padding: 10px;
+    }
+  
+    .countdown {
+      font-size: 16px;
+      width: 150px; /* Điều chỉnh chiều rộng khi màn hình nhỏ */
+    }
+  
+    #grade-input-modal {
+      padding: 20px 30px;
+      width: 90%;
+    }
+  
+    table,
+    th,
+    td {
+      font-size: 14px;
+    }
+  
+    td input {
+      width: 60%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    #grade-input-modal
+    @media screen and (max-width: 480px) {
+        #grade-input-modal {
+          width: 95%;
+          padding: 15px 20px;
+        }
+      
+        table,
+        th,
+        td {
+          font-size: 12px;
+        }
+      
+        td input {
+          width: 50%;
+        }
+      }
+      
+      /* Các kiểu ẩn và lỗi */
+      .hidden {
+        display: none;
+      }
+      
+      .error {
+        color: red;
+      }
+      
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+      
+      #completed-count {
+        font-size: 16px;
+        margin-top: 10px;
+      }
+  /* Giao diện sáng tối */
+body.dark-theme {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+  }
+  
+  body.dark-theme h2,
+  body.dark-theme h3 {
+    color: #4caf50;
+  }
+  
+  body.dark-theme .countdown {
+    background-color: #333;
+    color: #f0f0f0;
+    border: 2px solid #555;
+  }
+  
+  body.dark-theme .countdown:hover {
+    background-color: #4caf50;
+    color: white;
+    transform: translateY(-5px);
+  }
+  
+  body.dark-theme .modal-content {
+    background-color: #333;
+    color: #f0f0f0;
+    border: 1px solid #555;
+  }
+  
+  body.dark-theme .modal-content input {
+    background-color: #555;
+    color: #f0f0f0;
+    border: 2px solid #777;
+  }
+  
+  body.dark-theme .modal-content input:focus {
+    border-color: #4caf50;
+  }
+  
+  body.dark-theme button {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  body.dark-theme button:hover {
+    background-color: #45a049;
+  }
+  
+  body.dark-theme table,
+  body.dark-theme th,
+  body.dark-theme td {
+    border: 1px solid #555;
+  }
+  
+  body.dark-theme th {
+    background-color: #333;
+    color: #4caf50;
+  }
+  
+  body.dark-theme td {
+    background-color: #444;
+  }
+  
+      
